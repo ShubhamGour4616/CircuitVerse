@@ -56,7 +56,7 @@
             <% end %>
           </p>
           <% if policy(@user).edit? %>
-            <a class="btn primary-button ml-0" href="<%= profile_edit_path(current_user) %>"><%= t("users.circuitverse.index.edit_details") %></a>
+          <%= render_button(t("users.circuitverse.index.edit_details"), link: profile_edit_path(current_user), class: "primary-button ml-0") %>
           <% end %>
         </div>
       </div>
@@ -65,9 +65,9 @@
   <div class="row">
     <div class="col-12 users-circuits-navbar">
       <div class="users-circuits-navbar-buttons">
-        <button id="my-circuits" class="btn users-circuits-tab active"><%= t("users.circuitverse.index.my_circuits") %></button>
-        <button id="favourite-circuits" class="btn users-circuits-tab users-favourites-tab"><%= t("users.circuitverse.index.favourite_circuits") %></button>
-        <button id="collaborator-circuits" class="btn users-circuits-tab users-collaborators-tab"><%= t("users.circuitverse.index.collaborated_circuits") %></button>
+        <%= render_button(t("users.circuitverse.index.my_circuits"), class: "btn users-circuits-tab active", id: "my-circuits") %>
+        <%= render_button(t("users.circuitverse.index.favourite_circuits"), class: "btn users-circuits-tab users-favourites-tab", id: "favourite-circuits") %>
+        <%= render_button(t("users.circuitverse.index.collaborated_circuits"), class: "btn users-circuits-tab users-collaborators-tab", id: "collaborator-circuits") %>
       </div>
       <div class="users-circuits-search-container">
       <span><i class="fas fa-search search-icon-dashboard"></i><input type="search" class="users-circuits-search form-control form-input " placeholder="<%= t("users.circuitverse.index.search_circuits") %>"></span>

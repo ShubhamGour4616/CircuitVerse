@@ -16,7 +16,7 @@
               <p><%= example[:name] %></p>
               <span class="tooltiptext"><%= example[:name] %></span>
             </div>
-            <a class="btn primary-button circuit-card-primary-button" target="_blank" href="https://circuitverse.org/<%= example[:id] %>"><%= t("view") %></a>
+            <%= render_button(t("view"), link: "https://circuitverse.org/#{example[:id]}", class: "primary-button circuit-card-primary-button", target: "_blank") %>
           </div>
         </div>
       </div>

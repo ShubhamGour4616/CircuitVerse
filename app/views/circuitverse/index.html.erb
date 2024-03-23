@@ -50,8 +50,8 @@
       </div>
       <div class="row">
         <div class="col-12 home-tertiary-button-container">
-          <a class="btn tertiary-button" href="/teachers"><%= t("circuitverse.index.for_teachers") %></a>
-          <a class="btn tertiary-button" href="/contribute"><%= t("circuitverse.index.for_contributors") %></a>
+        <%= render_button(t("circuitverse.index.for_teachers"), link: "/teachers", class: "tertiary-button") %>
+        <%= render_button(t("circuitverse.index.for_contributors"), link: "/contribute", class: "tertiary-button") %>
         </div>
       </div>
       <div id="home-features-section" class="row center-row">
@@ -124,7 +124,7 @@
                 <p><%= t("circuitverse.index.featured_examples.circuit1_text") %></p>
                 <span class="tooltiptext"><%= t("circuitverse.index.featured_examples.circuit1_text") %></span>
               </div>
-              <a class="btn primary-button circuit-card-primary-button" target="_blank" href="https://circuitverse.org/users/3/projects/248"><%= t("view") %></a>
+              <%= render_button(t("view"), link: "https://circuitverse.org/users/3/projects/248", class: "primary-button circuit-card-primary-button", target: "_blank") %>
             </div>
           </div>
         </div>
@@ -136,7 +136,7 @@
                 <p><%= t("circuitverse.index.featured_examples.circuit2_text") %></p>
                 <span class="tooltiptext"><%= t("circuitverse.index.featured_examples.circuit2_text") %></span>
               </div>
-              <a class="btn primary-button circuit-card-primary-button" target="_blank" href="https://circuitverse.org/users/3/projects/67"><%= t("view") %></a>
+              <%= render_button(t("view"), link: "https://circuitverse.org/users/3/projects/67", class: "primary-button circuit-card-primary-button", target: "_blank") %>
             </div>
           </div>
         </div>
@@ -148,14 +148,14 @@
                 <p><%= t("circuitverse.index.featured_examples.circuit3_text") %></p>
                 <span class="tooltiptext"><%= t("circuitverse.index.featured_examples.circuit3_text") %></span>
               </div>
-              <a class="btn primary-button circuit-card-primary-button" target="_blank" href="https://circuitverse.org/users/3/projects/247"><%= t("view") %></a>
+                <%= render_button(t("view"), link: "https://circuitverse.org/users/3/projects/247", class: "primary-button circuit-card-primary-button", target: "_blank") %>
             </div>
           </div>
         </div>
       </div>
       <div class="row center-row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-          <a class="btn primary-button homepage-primary-button-feature" href="/examples"><%= t("circuitverse.index.explore_more") %></a>
+          <%= render_button(t("circuitverse.index.explore_more"), link: "/examples", class: "primary-button homepage-primary-button-feature") %>
         </div>
       </div>
     </div>
@@ -178,7 +178,7 @@
                       <p><%= circuit.name %></p>
                       <span class="tooltiptext"><%= circuit.name %></span>
                     </div>
-                    <a class="btn primary-button circuit-card-primary-button" target="_blank" href="<%= user_project_url(circuit.author, circuit) %>"><%= t("view") %></a>
+                      <%= render_button(t("view"), link: user_project_url(circuit.author, circuit), class: "primary-button circuit-card-primary-button", target: "_blank") %>
                   </div>
                 </div>
               </div>
@@ -187,7 +187,7 @@
         <% end %>
         <div class="row center-row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <a class="btn primary-button homepage-primary-button-feature" href="/featured_circuits"><%= t("circuitverse.index.explore_more") %></a>
+              <%= render_button(t("circuitverse.index.explore_more"), link: "/featured_circuits", class: "primary-button homepage-primary-button-feature") %>
             </div>
         </div>
       </div>
@@ -210,7 +210,7 @@
                     <p><%= project.name %></p>
                     <span class="tooltiptext"><%= project.name %></span>
                   </div>
-                  <a class="btn primary-button circuit-card-primary-button" target="_blank" href="<%= user_project_url(project.author, project) %>"><%= t("view") %></a>
+                  <%= render_button(t("view"), link: user_project_url(project.author, project), class: "primary-button circuit-card-primary-button", target: "_blank") %>
                 </div>
               </div>
             </div>
