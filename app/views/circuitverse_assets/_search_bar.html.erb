@@ -1,23 +1,47 @@
+<!-- app/views/circuitverse_assets/_search_bar.html.erb -->
+
 <div class="container navbar-search-container">
   <div class="row center-row">
-  <%= form_tag("/search", method: "get", id: "search-box", class: "navbar-search-bar-form") do %>
-    <%= select_tag :resource, options_for_select(%w[Users Projects], selected: params[:resource]), class: "navbar-search-bar-select", id: "search_type", onchange: "changePlaceholder()" %>
-    <%= text_field_tag :q, params[:q], placeholder: "Search for projects or users", autocomplete: "off", class: "form-control form-input navbar-search-bar-input" %>
-    <button class="btn primary-button navbar-search-bar-button" type="submit" name="button" value="Submit">Search</button>
-  <% end %>
+    <%= form_tag("/search", method: "get", id: "search-box", class: "navbar-search-bar-form") do %>
+      <%= select_tag :resource, options_for_select(%w[Users Projects], selected: params[:resource]), class: "navbar-search-bar-select", id: "search_type" %>
+      <%= text_field_tag :q, params[:q], placeholder: "Search for projects or users", autocomplete: "off", class: "form-control form-input navbar-search-bar-input" %>
+      <div class="dropdown">
+        <button class="btn primary-button navbar-search-bar-button dropdown-toggle" type="button" id="searchOptionsDropdown" onclick="toggleDropdownMenu()">
+          Search Options
+        </button>
+        <div class="dropdown-menu" aria-labelledby="searchOptionsDropdown" id="searchOptions">
+          <a class="dropdown-item" href="#" onclick="changeSearchOption('all_projects')">All Projects</a>
+          <a class="dropdown-item" href="#" onclick="changeSearchOption('most_views')">Most Views</a>
+          <a class="dropdown-item" href="#" onclick="changeSearchOption('recent_projects')">Recent Projects</a>
+        </div>
+      </div>
+      <button class="btn primary-button navbar-search-bar-button" type="submit" name="button" value="Submit">Search</button>
+      <%= hidden_field_tag :search_option, "all_projects", id: "search_option" %>
+    <% end %>
   </div>
 </div>
 
 <script>
-  function changePlaceholder() {
-    var selectElement = document.getElementById('search_type');
-    var inputElement = document.getElementsByClassName('navbar-search-bar-input')[0];
-    if (selectElement.value === 'Users') {
-      inputElement.placeholder = 'Search for users';
-    } else if (selectElement.value === 'Projects') {
-      inputElement.placeholder = 'Search for projects';
-    } else {
-      inputElement.placeholder = 'Search for projects or users';
+  function toggleDropdownMenu() {
+    var dropdownMenu = document.getElementById('searchOptions');
+    dropdownMenu.classList.toggle('show');
+  }
+
+  function changeSearchOption(option) {
+    document.getElementById('search_option').value = option;
+  }
+
+  // Close the dropdown menu if the user clicks outside of it
+  window.onclick = function(event) {
+    if (!event.target.matches('.dropdown-toggle')) {
+      var dropdowns = document.getElementsByClassName('dropdown-menu');
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
     }
   }
 </script>

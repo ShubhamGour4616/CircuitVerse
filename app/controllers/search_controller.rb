@@ -14,5 +14,6 @@ class SearchController < ApplicationController
     else
       not_found
     end
+    @results = @results.paginate(page: params[:page], per_page: MAX_RESULTS_PER_PAGE)
   end
 end
