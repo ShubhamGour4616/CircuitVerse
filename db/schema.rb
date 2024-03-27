@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_25_140331) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_27_095629) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -343,6 +343,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_25_140331) do
     t.index ["group_id"], name: "index_pending_invitations_on_group_id"
   end
 
+  create_table "pr_logs", force: :cascade do |t|
+    t.string "title"
+    t.string "state"
+    t.datetime "merged_at"
+    t.datetime "created_time"
+    t.string "pr_username"
+    t.string "user_avatar"
+    t.string "user_profile_link"
+    t.string "merged_by"
+    t.string "merged_user_avatar"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "project_data", force: :cascade do |t|
     t.bigint "project_id", null: false
     t.text "data"
@@ -451,6 +465,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_25_140331) do
     t.string "educational_institute"
     t.boolean "subscribed", default: true
     t.string "locale"
+    t.string "confirmation_token"
+    t.datetime "confirmation_sent_at"
+    t.datetime "confirmed_at"
+    t.string "unconfirmed_email"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

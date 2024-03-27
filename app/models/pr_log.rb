@@ -1,0 +1,2 @@
+class PrLog < ApplicationRecord
+end
