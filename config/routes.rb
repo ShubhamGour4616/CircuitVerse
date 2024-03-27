@@ -2,6 +2,7 @@
 
 # rubocop:disable Metrics/BlockLength
 Rails.application.routes.draw do
+  resources :pr_logs
   mount RailsAdmin::Engine => "/admin", as: "rails_admin"
   mount SimpleDiscussion::Engine => "/forum", constraints: -> { Flipper.enabled?(:forum) }
 
@@ -95,6 +96,9 @@ Rails.application.routes.draw do
 
   post "/push/subscription/new", to: "push_subscription#create"
   post "/push/test", to: "push_subscription#test"
+
+  # for pr merge logs of github
+  resources :pr_logs, only: [:index, :show, :create]
 
   # projects
   scope "/projects" do

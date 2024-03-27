@@ -1,0 +1,95 @@
+<!-- app/views/pr_logs/index.html.erb -->
+
+<!-- Include CSS for styling -->
+<style>
+  .pr_logs_container {
+    padding: 20px;
+    margin-top: 20px;
+  }
+
+  .pr_log {
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .pr_log_left, .pr_log_right {
+    flex: 1;
+    padding: 20px;
+  }
+
+  .pr_log_left {
+    border-right: 1px solid #ccc;
+  }
+
+  .pr_log h2 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+
+  .pr_log ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .pr_log ul li {
+    margin-bottom: 10px;
+    font-size: 1rem;
+  }
+
+  .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+
+  .show_link {
+    margin-top: 10px;
+  }
+
+  .show_link a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .show_link a:hover {
+    text-decoration: underline;
+  }
+</style>
+
+<!-- Display PR logs -->
+<div class="pr_logs_container">
+  <h1>PR Logs</h1>
+
+  <% @pr_logs.each do |pr_log| %>
+    <div class="pr_log">
+      <div class="pr_log_left">
+        <h2><%= pr_log.title %></h2>
+        <ul>
+          <li><strong>State:</strong> <%= pr_log.state %></li>
+          <li><strong>Merged at:</strong> <%= pr_log.merged_at %></li>
+          <li><strong>Created at:</strong> <%= pr_log.created_at %></li>
+          <li><strong>PR Username:</strong> <%= pr_log.pr_username %></li>
+          <li><strong>User Avatar:</strong> <%= image_tag pr_log.user_avatar, class: "avatar" %></li>
+          <li><strong>User Profile Link:</strong> <%= link_to pr_log.user_profile_link, pr_log.user_profile_link %></li>
+        </ul>
+      </div>
+      <div class="pr_log_right">
+        <ul>
+          <li><strong>Merged by:</strong> <%= pr_log.merged_by %></li>
+          <li><strong>Merged User Avatar:</strong> <%= image_tag pr_log.merged_user_avatar, class: "avatar" %></li>
+        </ul>
+      </div>
+    </div>
+    <div class="show_link">
+      <%= link_to "Show this PR log", pr_log %>
+    </div>
+  <% end %>
+</div>
