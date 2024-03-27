@@ -7,7 +7,6 @@ class CollaborationsController < ApplicationController
     ProjectPolicy
   end
 
-  # POST /collaborations
   # POST /collaborations.json
   def create
     @project = Project.find(collaboration_params[:project_id])
