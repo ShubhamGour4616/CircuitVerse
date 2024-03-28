@@ -75,7 +75,7 @@ Rails.application.routes.draw do
   get  "/tos", to: "circuitverse#tos"
   get  "/teachers", to: "circuitverse#teachers"
   get  "/contribute", to: "circuitverse#contribute"
-
+  get  "/recent_projects", to: "circuitverse#recent_projects"
   #announcements
   resources :announcements, except: %i[show]
 
