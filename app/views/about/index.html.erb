@@ -9,8 +9,8 @@
     </div>
   </div>
   <div class="col-xs col-sm col-md col-lg div-flex-center">
-    <a class="btn primary-button" href="/tos" target="_blank"><%= t("about.terms_of_service") %></a>
-    <a class="btn primary-button" href="/privacy" target="_blank"><%= t("about.privacy_policy") %></a>
+    <%= render_button(t("about.terms_of_service"), link: "/tos", class: "primary-button", target: "_blank") %>
+    <%= render_button(t("about.privacy_policy"), link: "/privacy", class: "primary-button", target: "_blank") %>
   </div>
   <div class="row center-row">
     <div class="col-xs col-sm col-md col-lg">
@@ -104,7 +104,7 @@
     <br>
     <div class="row center-row">
       <div class="col-xs col-sm col-md col-lg text-center">
-        <a class="btn primary-button about-primary-button" href="/contribute"><%= t("about.become_contributor") %></a>
+        <%= render_button(t("about.become_contributor"), link: "/contribute", class: "primary-button about-primary-button") %>
       </div>
     </div>
 </div>
